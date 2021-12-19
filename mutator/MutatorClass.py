@@ -13,3 +13,7 @@ class Mutator:
 
     def get_name(self) -> str:
         return self.name
+    
+    def get_regex(self):
+        return self.look_for
+    
