@@ -49,10 +49,10 @@ html_template = """<html>
 <p>Read Me File:<a href="../../PorcupinesMutator/README.md">README</a></p>
 <p> Mutation Test(s):</p>"""
 for x in created_mutants:
-    html_template +='<a href="diff_' + x.get_name() + '.html">' + x.get_name() + '</a><br>'
+      html_template +='<a href="diff_' + x.get_name() + '.html">' + x.get_name() + '</a><br>'
 
 html_template += """
-<p>Mutants Used:<a href="../../PorcupinesMutator/config.ini">Mutants</a></p>
+<p>Mutants Used:<a href="config.ini">Mutants</a></p>
 
 </body>
 </html>
