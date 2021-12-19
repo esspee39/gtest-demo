@@ -5,6 +5,8 @@ from configparser import ConfigParser
 from mutant_dictionary import all_mutants
 from mutant_dictionary import all_mutant_keys
 import filediff
+import containsmutant
+import getfilename
 
 if not os.path.exists('./config.ini'):  # Config parser - From Drew's and Luke's Code
     print("Error: Config File does not exist")
@@ -19,7 +21,7 @@ else:
     filename = "../CMakeLists.txt"
     mutant_list = []
     active_mutants = []
-
+    created_mutants = []
 
     for x in mutants:  # Parses config for mutants that are marked active
         if config.get('Mutants', x) == '1':
@@ -30,9 +32,11 @@ else:
             active_mutants.append(all_mutants[x])
 
     for x in active_mutants:
-        filediff.generateHTMLDiff("example.cpp", x.get_name())
+        if containsmutant.containsMutant("../src/example.cpp", x.get_regex()):
+            filediff.generateHTMLDiff("example.cpp", x.get_name())
+            created_mutants.append(x)
 
-f = open('Mutation Testing.html', 'w')
+f = open('MutationTesting.html', 'w')
 
 # the html code which will go in the file GFG.html
 html_template = """<html>
@@ -42,7 +46,12 @@ html_template = """<html>
 <body>
 <h2>C++ Mutation Testing</h2>
 
-<p>Read Me File:<a href="../../PorcupinesMutator/README.md">README</a></p>
+<p>Read Me File:<a href="../../PorcupinesMutator/README.md">README</a></p>"""
+
+for x in created_mutants:
+      html_template +='<a href="diff_' + x.get_name() + '.html">' + x.get_name() + '</a><br>'
+
+html_template += """
 <p>Mutation Test: <a href="diff.html">Results</a></p>
 <p>Mutants Used:<a href="../../PorcupinesMutator/config.ini">Mutants</a></p>
 <p>Gcovr:</p>
