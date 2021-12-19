@@ -6,10 +6,19 @@ from mutant_dictionary import all_mutants
 from mutant_dictionary import all_mutant_keys
 import getfilename
 
+def containsMutant(file, mutant):
+    reg = re.compile(mutant)
+    with open(file, "r") as f:
+        if re.search(reg, f.read()):
+            return True
+        else:
+            return False
+    close()
+    
 class GenerateMutants():
 
     if not os.path.exists('./config.ini'): #Config parser - From Drew's and Luke's Code
-        print("Error: Config File does not existt")
+        print("Error: Config File does not exist")
         with open('config.ini', 'w', encoding="utf-8") as f:
             f.write('testing')
             sys.exit()
@@ -94,7 +103,22 @@ class GenerateMutants():
             mutation_headers = getfilename.getHeaderFilenamesFromCMakeLists("../src/CMakeLists.txt")
             test_targets = getfilename.getFilenamesFromCMakeLists("../test/CMakeLists.txt")
 
-
+            for target in mutation_targets:
+                for mutant in active_mutants:
+                    if not containsMutant('../src/' + target, mutant.get_regex()):
+                        active_mutants.remove(mutant)
+                        print("The file does not contain " + mutant.get_name())
+                    else:
+                        with open("../src/" + target, "r") as input:
+                            with open(build_dir + "/src/" + target.replace(".cpp", "_" + i.get_name() + ".cpp"),
+                                      "w+") as output:
+                                for line in input:
+                                    mutated_line = i.mutate(line)
+                                    for header in mutation_headers:
+                                        final_line = mutated_line.replace(header, header.replace(".h",
+                                                                                                 "_" + i.get_name() + ".h"))
+                                        output.write(final_line)
+                                        
             for target in mutation_targets:
                 with open("../src/" + target, "r") as input:
                     with open(build_dir + "/src/" + target.replace(".cpp", "_" + i.get_name() + ".cpp"), "w+") as output:
