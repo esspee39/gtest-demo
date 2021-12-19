@@ -5,6 +5,7 @@ import shutil
 from mutant_dictionary import all_mutants
 from mutant_dictionary import all_mutant_keys
 import getfilename
+import re
 
 def containsMutant(file, mutant):
     reg = re.compile(mutant)
