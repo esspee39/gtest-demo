@@ -2,7 +2,7 @@
 
 #include "example.h"
 
-TEST(example, or)
+TEST(example, and)
 {
   ASSERT_FALSE(logical_and());
 }
