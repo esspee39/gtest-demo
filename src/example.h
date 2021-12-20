@@ -24,9 +24,9 @@ bool bitwise_and();
 
 bool bitwise_or();
 
-bool booleantrue();
+bool boolean_t();
 
-bool booleanfalse();
+bool boolean_f();
 
 bool greaterthan();
 

@@ -24,9 +24,9 @@ bool bitwise_and() {return (true & false);}
 
 bool bitwise_or() {return (true | false);}
 
-bool booleantrue() {return (true);}
+bool boolean_t() {return (true);}
 
-bool booleanfalse() {return (false);}
+bool boolean_f() {return (false);}
 
 bool greaterthan() {return (7 > 6);}
 
