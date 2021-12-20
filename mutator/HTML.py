@@ -48,6 +48,8 @@ else:
  .diff_chg {background-color:#ffff77}
  .diff_sub {background-color:#ffaaaa}</style></head><body>""")
                 killed = read_xml.getMutantKilledInfo(x.get_name())
+                print("MUTANT :" + x.get_name() + " KILLED BY:")
+                print(killed)
                 if(killed):
                     diff_file.write("<h1>" + x.get_name() + ": Killed by ")
                     diff_file.write(", ".join(killed))

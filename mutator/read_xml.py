@@ -14,6 +14,7 @@ class Test:
     status = ""
 
 def getMutantKilledInfo(mutant):
+    print("PARSING XML FOR: " + mutant)
     #get current year
     now = datetime.now()
     year = now.strftime("%Y")
