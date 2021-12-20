@@ -12,7 +12,7 @@ all_mutants = {
     "EqualityEqualsToNotEquals": Mutator("==","!=","EqualityEqualsToNotEquals"),
     "EqualityNotEqualsToEquals": Mutator("!=", "==","EqualityNotEqualsToEquals"),
     "LogicalAndToOr": Mutator("&&", "||", "LogicalAndToOr"),
-    "LogicalOrToAnd": Mutator("[||][^ ]", "&&", "LogicalAndToOr"),
+    "LogicalOrToAnd": Mutator("[||][^ ]", "&&", "LogicalOrToAnd"),
     "LogicalBitwiseOrToAnd": Mutator("(?<!\|)\|(?!\|)", "&", "LogicalBitwiseOrToAnd"),
     "LogicalBitwiseAndToOr": Mutator("(?<!\&)\&(?!\&)", "|", "LogicalBitwiseAndToOr"),
     "ArithmeticIncrementToDecrement": Mutator("[+]{2}", "--", "ArithmeticIncrementToDecrement"),
