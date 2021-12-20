@@ -26,7 +26,7 @@ enable_testing()
 add_subdirectory(test)
 
 execute_process(
-	COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/mutator/GenerateMutants.py
+	COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/mutator/generate_mutants.py
 	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/mutator
 )
 
