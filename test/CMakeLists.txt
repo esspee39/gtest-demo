@@ -28,7 +28,6 @@ add_executable(
     example_lessthanequals.cpp
     example_notequals.cpp
     example_or.cpp
-    example_mod.cpp
     )
 
 target_link_libraries(unit_tests
