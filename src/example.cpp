@@ -38,4 +38,4 @@ bool lessthanequals() {return (6 <= 7);}
 
 bool notequals() {return (1 != 2);}
 
-bool mod_numbers(const double f1, const double f2) {return f1 % f2; }
+//bool mod_numbers(const double f1, const double f2) {return f1 % f2; }
