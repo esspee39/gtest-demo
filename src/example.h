@@ -38,4 +38,4 @@ bool lessthanequals();
 
 bool notequals();
 
-bool mod_numbers(const double f1, const double f2);
+//bool mod_numbers(const double f1, const double f2);
