@@ -31,12 +31,12 @@ def getMutantKilledInfo(mutant):
 
     for element in root[0]:
         if(element.tag == "Test"):
-            if mutant in element[0].text:
-                #print("MUTANT NAME: " + mutant)
+            if mutant in element[0].text: 
                 testname = element[0].text.split(".")[1]
                 mutantname = mutant
-                #print("TEST NAME: " + testname)
-                #print("INSERTED " + mutantname + ": " + testname + ": " + element.attrib.get("Status"))
+                print("MUTANT NAME: " + mutant)
+                print("TEST NAME: " + testname)
+                print("STATUS: " + element.attrib.get("Status"))
                 newtest = Test()
                 newtest.mutant = mutant
                 newtest.test = testname
