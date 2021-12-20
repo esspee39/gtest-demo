@@ -73,7 +73,10 @@ html_template = """<html>
 <p>Mutants Used:<a href="config.ini">Mutants</a></p>
 <p> Mutation Test(s):</p>"""
 for x in created_mutants:
-      html_template +='<a href="diff_' + x.get_name() + '.html">' + x.get_name() + '</a><br>'
+    if(killed):
+        html_template +='<a href="diff_' + x.get_name() + '.html">KILLED: ' + x.get_name() + '</a><br>'
+    else:
+        html_template +='<a href="diff_' + x.get_name() + '.html">SURVIVED: ' + x.get_name() + '</a><br>'
 
 html_template += """
 
