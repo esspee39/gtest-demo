@@ -6,7 +6,6 @@ from mutant_dictionary import all_mutants
 from mutant_dictionary import all_mutant_keys
 import filediff
 import containsmutant
-import getfilename
 import read_xml
 
 if not os.path.exists('./config.ini'):  # Config parser - From Drew's and Luke's Code
@@ -34,7 +33,7 @@ else:
 
     for x in active_mutants:
         if containsmutant.containsMutant("../src/example.cpp", x.get_regex()):
-            with open("diff" + "_" + x.get_name() + ".html","w+") as diff_file:
+            with open("diff" + "_" + x.get_name() + ".html", "w+") as diff_file:
                 diff_file.write("""
 <head><meta http-equiv="Content-Type"
  content="text/html; charset=utf-8" />
@@ -50,7 +49,7 @@ else:
                 killed = read_xml.getMutantKilledInfo(x.get_name())
                 print("MUTANT :" + x.get_name() + " KILLED BY:")
                 print(killed)
-                if(killed):
+                if killed:
                     diff_file.write("<h1>" + x.get_name() + ": Killed by ")
                     diff_file.write(", ".join(killed))
                     diff_file.write("</h1>")
@@ -63,7 +62,7 @@ else:
 
 f = open('MutationTesting.html', 'w')
 
-html_template = """<html>
+html_out = """<html>
 <head>
 <title>Title</title>
 </head>
@@ -75,18 +74,18 @@ html_template = """<html>
 <p> Mutation Test(s):</p>"""
 for x in created_mutants:
     killed = read_xml.getMutantKilledInfo(x.get_name())
-    if(killed):
-        html_template +='<a href="diff_' + x.get_name() + '.html">KILLED: ' + x.get_name() + '</a><br>'
+    if killed:
+        html_out += '<a href="diff_' + x.get_name() + '.html">KILLED: ' + x.get_name() + '</a><br>'
     else:
-        html_template +='<a href="diff_' + x.get_name() + '.html">SURVIVED: ' + x.get_name() + '</a><br>'
+        html_out += '<a href="diff_' + x.get_name() + '.html">SURVIVED: ' + x.get_name() + '</a><br>'
 
-html_template += """
+html_out += """
 
 </body>
 </html>
 """
 #writing the code into the file
-f.write(html_template)
+f.write(html_out)
 
 # close the file
 f.close()
