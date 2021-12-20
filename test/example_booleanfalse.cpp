@@ -4,5 +4,5 @@
 
 TEST(example, booleanfalse)
 {
-  ASSERT_FALSE(booleanfalse());
+  ASSERT_FALSE(boolean_f());
 }
