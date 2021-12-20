@@ -16,13 +16,13 @@ double divideEquals_number(double f1, double f2){f1 /= f2; return f1;}
 
 double multiEquals_number(double f1, double f2){f1 *= f2; return f1;}
 
-bool logical_and() {return (true&&false);}
+bool logical_and() {return (true && false);}
 
-bool logical_or() {return (true||false);}
+bool logical_or() {return (true || false);}
 
-bool bitwise_and() {return (true&false);}
+bool bitwise_and() {return (true & false);}
 
-bool bitwise_or() {return (true|false);}
+bool bitwise_or() {return (true | false);}
 
 bool booleantrue() {return (true);}
 
