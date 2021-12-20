@@ -61,7 +61,6 @@ else:
 
 f = open('MutationTesting.html', 'w')
 
-# the html code which will go in the file GFG.html
 html_template = """<html>
 <head>
 <title>Title</title>
@@ -73,6 +72,7 @@ html_template = """<html>
 <p>Mutants Used:<a href="config.ini">Mutants</a></p>
 <p> Mutation Test(s):</p>"""
 for x in created_mutants:
+    killed = read_xml.getMutantKilledInfo(x.get_name())
     if(killed):
         html_template +='<a href="diff_' + x.get_name() + '.html">KILLED: ' + x.get_name() + '</a><br>'
     else:
