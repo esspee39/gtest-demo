@@ -9,8 +9,8 @@ def generateHTMLDiff(srcname, mutantname):
 
     hd = dl.HtmlDiff()
 
-    diffs = hd.make_file(original_file.split("\n"), mutated_file.split("\n"), fromdesc='Source', todesc=mutantname, context=False, numlines=0)
-
-    with open("diff" + "_" + mutantname + ".html","w+") as diff_file:
-        diff_file.write(diffs)
+    diffs = hd.make_table(original_file.split("\n"), mutated_file.split("\n"), fromdesc='Source', todesc=mutantname, context=False, numlines=0)
+    return diffs
+    #with open("diff" + "_" + mutantname + ".html","w+") as diff_file:
+    #    diff_file.write(diffs)
 

@@ -7,6 +7,7 @@ from mutant_dictionary import all_mutant_keys
 import filediff
 import containsmutant
 import getfilename
+import read_xml
 
 if not os.path.exists('./config.ini'):  # Config parser - From Drew's and Luke's Code
     print("Error: Config File does not exist")
@@ -33,7 +34,29 @@ else:
 
     for x in active_mutants:
         if containsmutant.containsMutant("../src/example.cpp", x.get_regex()):
-            filediff.generateHTMLDiff("example.cpp", x.get_name())
+            with open("diff" + "_" + x.get_name() + ".html","w+") as diff_file:
+                diff_file.write("""
+<head><meta http-equiv="Content-Type"
+ content="text/html; charset=utf-8" />
+ <title></title>
+ <style type="text/css">
+ table.diff {font-family:Courier; border:medium;}
+ diff_header {background-color:#e0e0e0}
+ td.diff_header {text-align:right}
+ .diff_next {background-color:#c0c0c0}
+ .diff_add {background-color:#aaffaa}
+ .diff_chg {background-color:#ffff77}
+ .diff_sub {background-color:#ffaaaa}</style></head><body>""")
+                killed = read_xml.getMutantKilledInfo(x.get_name())
+                if(killed):
+                    diff_file.write("<h1>" + x.get_name() + ": Killed by ")
+                    diff_file.write(", ".join(killed))
+                    diff_file.write("</h1>")
+                else:
+                    diff_file.write("<h1>" + x.get_name() + ": Survived")
+                diffs = filediff.generateHTMLDiff("example.cpp", x.get_name())
+                diff_file.write(diffs)
+                diff_file.write("</body>")
             created_mutants.append(x)
 
 f = open('MutationTesting.html', 'w')
