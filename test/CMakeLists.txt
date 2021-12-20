@@ -17,6 +17,18 @@ add_executable(
     example_decrement.cpp
     example_divideEquals.cpp
     example_multiEquals.cpp
+    example_and.cpp
+    example_bitwiseand.cpp
+    example_bitwiseor.cpp
+    example_booleanfalse.cpp
+    example_booleantrue.cpp
+    example_greaterthan.cpp
+    example_greaterthanequals.cpp
+    example_lessthan.cpp
+    example_lessthanequals.cpp
+    example_notequals.cpp
+    example_or.cpp
+    example_mod.cpp
     )
 
 target_link_libraries(unit_tests
